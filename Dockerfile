@@ -7,10 +7,9 @@
 # performance.
 
 FROM netflixoss/java:8
-MAINTAINER Ches Martin <ches@whiskeyandgrits.net>
 
 # The Scala 2.12 build is currently recommended by the project.
-ENV KAFKA_VERSION=0.10.2.1 KAFKA_SCALA_VERSION=2.12 JMX_PORT=7203
+ENV KAFKA_VERSION=2.2.1 KAFKA_SCALA_VERSION=2.12 JMX_PORT=7203
 ENV KAFKA_RELEASE_ARCHIVE kafka_${KAFKA_SCALA_VERSION}-${KAFKA_VERSION}.tgz
 
 RUN mkdir /kafka /data /logs
@@ -35,7 +34,14 @@ RUN tar -zx -C /kafka --strip-components=1 -f ${KAFKA_RELEASE_ARCHIVE} && \
   rm -rf kafka_*
 
 ADD config /kafka/config
+ADD resources /kafka/resources
 ADD start.sh /start.sh
+
+# Install jar plugin
+# create the dir
+RUN mkdir -p /usr/local/share/kafka/plugins
+# copy file
+COPY jdbc-kafka-connector.jar /usr/local/share/kafka/plugins/jdbc-kafka-connector.jar
 
 # Set up a user to run Kafka
 RUN groupadd kafka && \
