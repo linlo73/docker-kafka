@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /.metadata/
 .classpath
 .project
@@ -5,3 +6,7 @@
 .log
 kafka-connector/target/
 kafka-connector/logs/
+=======
+logs
+data
+>>>>>>> refs/remotes/origin/master
