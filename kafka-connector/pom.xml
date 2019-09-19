@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.it.ibm.kafka</groupId>
 	<artifactId>kafka-connector</artifactId>
-	<version>1.0.0.0</version>
+	<version>1.0.0.1</version>
 	<name>kafka-connect-project</name>
 	<description>A Kafka Connect Connector for kafka-connect-project</description>
 
